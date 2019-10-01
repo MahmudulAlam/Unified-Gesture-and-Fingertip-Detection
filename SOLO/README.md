@@ -56,8 +56,10 @@ size and the sigmoid activation function is applied for normalized output.
 ## Loss Function
 To train the network, following binary cross-entropy loss function is defined where ![H](https://latex.codecogs.com/gif.latex?%7B%5Cmathbb%7BH%7D%7D)
 and ![H^hat](https://latex.codecogs.com/gif.latex?%5Chat%7B%5Cmathbb%7BH%7D%7D) are the ground truth and the predicted
-output matrix of the SOLO and M represents the batch size.
+output matrix of the SOLO. Here, N and M represent the length of the output matrix and the batch size respectively.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/37298971/65222489-018c9d00-dae1-11e9-9ad5-704fce1cd030.png" width="520">
+  <img src="https://user-images.githubusercontent.com/37298971/65953360-9be7cb80-e465-11e9-8e9a-838d9cc75b1c.jpg" width="650">
 </p>
+
+The loss function is optimized using the ADAM optimizer with standard hyperparameter values. 
