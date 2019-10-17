@@ -59,7 +59,17 @@ and ![H^hat](https://latex.codecogs.com/gif.latex?%5Chat%7B%5Cmathbb%7BH%7D%7D) 
 output matrix of the SOLO. Here, N and M represent the length of the output matrix and the batch size respectively.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/37298971/65953360-9be7cb80-e465-11e9-8e9a-838d9cc75b1c.jpg" width="650">
+  <img src="https://user-images.githubusercontent.com/37298971/65953360-9be7cb80-e465-11e9-8e9a-838d9cc75b1c.jpg" width="600">
 </p>
 
 The loss function is optimized using the ADAM optimizer with standard hyperparameter values. 
+
+## Output of SOLO and Generalized Learning
+Although the SOLO algorithm is trained using the images having hand in each of them, the algorithm is able to avoid predicting any hand 
+in the images where the hand is absent which shows the generalization in the learning of the grid-wise prediction. The following figure 
+shows the outputs of the SOLO algorithm detecting hand in the image of the test set shown in (a) and not detecting any hand in the image 
+where the hand is absent in the egocentric vision shown in (b) indicating the generalized learning of the algorithm.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/37298971/66996135-fe8dc800-f0f1-11e9-8a46-76c88ec5db4b.png" width="600">
+</p>
