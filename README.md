@@ -15,9 +15,10 @@ average to regress the final fingertips positional output.
 - [x] Keras==2.2.4
 - [x] OpenCV==3.4.4
 - [x] ImgAug==0.2.6
-- [x] Weights: Download the trained weights files for gesture recognition and fingertip detection model and put the weights folder in the working directory. 
+- [x] [Weights](https://mega.nz/#F!y9dBAKiK!gDd8AZCax2IIUGo4W4ixUw): Download the trained weights files for gesture recognition and fingertip detection model and put the weights folder in the working directory. 
 
 [![Downloads](https://img.shields.io/badge/download-weights-green.svg?style=popout-flat&logo=mega)](https://mega.nz/#F!y9dBAKiK!gDd8AZCax2IIUGo4W4ixUw)
+[![Downloads](https://img.shields.io/badge/download-weights-blue.svg?style=popout-flat&logo=dropbox)](https://www.dropbox.com/s/bqrzxcrt2x0mitr/weights.zip?dl=0)
 
 The ```weights``` folder contains three weights files. The ```comparison.h5``` is for first five classes and ```performance.h5``` 
 is for first eight classes. ```solo.h5``` is for hand detection.
