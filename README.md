@@ -10,12 +10,16 @@ average to regress the final fingertips positional output.
   <img src="data/unified.gif" width="350">
 </p>
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/37298971/72676259-5f45eb80-3ab9-11ea-96d7-436f160a4b84.png" width="600">
+</p>
+
 ## Requirements
 - [x] TensorFlow-GPU==1.11.0
 - [x] Keras==2.2.4
-- [x] OpenCV==3.4.4
 - [x] ImgAug==0.2.6
-- [x] [Weights](https://mega.nz/#F!y9dBAKiK!gDd8AZCax2IIUGo4W4ixUw): Download the trained weights files for gesture recognition and fingertip detection model and put the weights folder in the working directory. 
+- [x] OpenCV==3.4.5.20
+- [x] Weights: [```Download the pre-trained weights```](https://mega.nz/#F!y9dBAKiK!gDd8AZCax2IIUGo4W4ixUw) files of the unified gesture recognition and fingertip detection model and put the weights folder in the working directory.
 
 [![Downloads](https://img.shields.io/badge/download-weights-green.svg?style=popout-flat&logo=mega)](https://mega.nz/#F!y9dBAKiK!gDd8AZCax2IIUGo4W4ixUw)
 [![Downloads](https://img.shields.io/badge/download-weights-blue.svg?style=popout-flat&logo=dropbox)](https://www.dropbox.com/s/bqrzxcrt2x0mitr/weights.zip?dl=0)
@@ -44,7 +48,7 @@ To run in real-time simply clone the repository and download the weights file an
 directory > python real-time.py
 ```
 In real-time execution, there are two stages. In the first stage, the hand is detected using single object localization (SOLO) algorithm 
-which is a simple single object multi-class object detection algorithm primarily published in my [Fingertip Mixed Reality](https://github.com/MahmudulAlam/Fingertip-Mixed-Reality) repository. The detected hand portion is then cropped and fed to the second stage for gesture recognition and fingertip detection. 
+which is a simple single object multi-class object detection algorithm primarily published in my [```Fingertip Mixed Reality```](https://github.com/MahmudulAlam/Fingertip-Mixed-Reality) repository. The detected hand portion is then cropped and fed to the second stage for gesture recognition and fingertip detection. 
 
 ## Output
 Here is the output of the unified gesture recognition and fingertip detection model for all of the classes of the dataset where 
