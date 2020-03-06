@@ -6,8 +6,14 @@ information fingertips are localized. Instead of directly regressing fingertips 
 CNN, we regress the ensemble of fingertips position from the fully convolutional network (FCN) and subsequently take ensemble 
 average to regress the final fingertips positional output.
 
+[![GitHub stars](https://img.shields.io/github/stars/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/network)
+[![GitHub issues](https://img.shields.io/github/issues/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/issues)
+[![Version](https://img.shields.io/badge/version-1.0-orange.svg?longCache=true&style=flat)](https://github.com/MahmudulAlam/Fingertip-Mixed-Reality)
+[![GitHub license](https://img.shields.io/github/license/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/blob/master/LICENSE)
+
 <p align="center">
-  <img src="data/unified.gif" width="350">
+  <img src="data/unified.gif" width="400">
 </p>
 
 <p align="center">
