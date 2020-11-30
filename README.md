@@ -19,6 +19,8 @@ Included ```robust real-time hand detection using yolo``` for better smooth perf
 </p>
 
 ## Requirements
+You can either run `pip install -r requirements.txt` or install them manually:
+- [x] Python 3.6.*
 - [x] TensorFlow-GPU==1.15.0
 - [x] Keras==2.2.4
 - [x] ImgAug==0.2.6
