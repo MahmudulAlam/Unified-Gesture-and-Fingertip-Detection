@@ -33,7 +33,15 @@ The ```weights``` folder contains four weights files. The ```classes5.h5``` is f
 ## Paper
 [![Paper](https://img.shields.io/badge/paper-ArXiv-ff0a0a.svg?longCache=true&style=flat)](https://arxiv.org/abs/2101.02047)
 
-To get more information about the proposed method and experiments, please go through the [```paper```](https://arxiv.org/abs/2101.02047)
+To get more information about the proposed method and experiments, please go through the [```paper```](https://arxiv.org/abs/2101.02047). Cite the paper as: 
+```
+@article{alam2021unified,
+  title={A Unified Learning Approach for Hand Gesture Recognition and Fingertip Detection},
+  author={Alam, Mohammad Mahmudul and Islam, Mohammad Tariqul and Rahman, SM Mahbubur},
+  journal={arXiv preprint arXiv:2101.02047},
+  year={2021}
+}
+```
 
 ## Dataset
 The proposed gesture recognition and fingertip detection model is trained by employing [```Scut-Ego-Gesture Dataset```](http://www.hcii-lab.net/data/SCUTEgoGesture/index.htm) which has a total of eleven different single hand gesture datasets. Among the eleven different gesture datasets, eight of them are considered for experimentation. A detailed explanation about the partition of the dataset along with the list of the images used in the training, validation, and the test set is provided in the [```dataset/```](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/dataset#dataset-description) folder.
