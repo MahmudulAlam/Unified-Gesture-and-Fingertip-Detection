@@ -8,6 +8,7 @@ fingertips = Fingertips(weights='weights/classes8.h5')
 
 image = cv2.imread('data/sample.jpg')
 tl, br = hand.detect(image=image)
+
 if tl or br is not None:
     cropped_image = image[tl[1]:br[1], tl[0]: br[0]]
     height, width, _ = cropped_image.shape
@@ -24,6 +25,7 @@ if tl or br is not None:
 
     # drawing
     index = 0
+
     color = [(15, 15, 240), (15, 240, 155), (240, 155, 15), (240, 15, 155), (240, 15, 240)]
     image = cv2.rectangle(image, (tl[0], tl[1]), (br[0], br[1]), (235, 26, 158), 2)
     for c, p in enumerate(prob):

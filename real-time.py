@@ -10,7 +10,8 @@ if hand_detection_method is 'solo':
 elif hand_detection_method is 'yolo':
     hand = YOLO(weights='weights/yolo.h5', threshold=0.8)
 else:
-    assert False, "'" + hand_detection_method + "' hand detection does not exist. use either 'solo' or 'yolo' as hand detection method"
+    assert False, "'" + hand_detection_method + \
+                  "' hand detection does not exist. use either 'solo' or 'yolo' as hand detection method"
 
 fingertips = Fingertips(weights='weights/classes8.h5')
 
@@ -25,6 +26,7 @@ while True:
 
     # hand detection
     tl, br = hand.detect(image=image)
+
     if tl and br is not None:
         cropped_image = image[tl[1]:br[1], tl[0]: br[0]]
         height, width, _ = cropped_image.shape

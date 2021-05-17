@@ -1,5 +1,5 @@
 import numpy as np
-import seaborn as sn
+import seaborn as sns
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -11,8 +11,8 @@ class_name = ['SingleOne', 'SingleTwo', 'SingleThree', 'SingleFour', 'SingleFive
 
 df_cm = pd.DataFrame(conf_mat, class_name, class_name)
 
-sn.set(font_scale=1.3)
-sn.heatmap(df_cm, annot=True, cmap='Blues', fmt='g', square=True)
+sns.set(font_scale=1.3)
+sns.heatmap(df_cm, annot=True, cmap='Blues', fmt='g', square=True)
 
 plt.xticks(rotation=45)
 plt.savefig("data/" + data_file + ".eps", bbox_inches="tight", pad_inches=0)

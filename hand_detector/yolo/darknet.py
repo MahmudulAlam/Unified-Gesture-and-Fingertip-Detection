@@ -1,5 +1,5 @@
-from keras.models import Input, Model
-from keras.layers import Conv2D, MaxPooling2D, BatchNormalization, Activation
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Input, Conv2D, MaxPooling2D, BatchNormalization, Activation
 
 
 def conv_batch_norm_relu(x, n_filters, f, padding='same', activation='relu'):
@@ -10,8 +10,8 @@ def conv_batch_norm_relu(x, n_filters, f, padding='same', activation='relu'):
 
 
 def model():
-    input = Input(shape=(224, 224, 3))
-    x = conv_batch_norm_relu(input, 32, (3, 3), padding='same', activation='relu')
+    inputs = Input(shape=(224, 224, 3))
+    x = conv_batch_norm_relu(inputs, 32, (3, 3), padding='same', activation='relu')
     x = MaxPooling2D(pool_size=(2, 2), strides=(2, 2))(x)
 
     x = conv_batch_norm_relu(x, 64, (3, 3), padding='same', activation='relu')
@@ -42,7 +42,8 @@ def model():
     x = Conv2D(5, (1, 1), padding='same')(x)
     x = BatchNormalization()(x)
     x = Activation('sigmoid', name='output')(x)
-    return Model(inputs=input, outputs=x)
+
+    return Model(inputs=inputs, outputs=x)
 
 
 if __name__ == '__main__':

@@ -1,174 +1,115 @@
-import os
-import cv2
 import random
 import numpy as np
 from visualize import visualize
-from preprocess.datagen import label_generator
-from preprocess.augmentation import rotation, translate, crop, noise, salt
+from preprocess.augmentation import augment
 
 
-def train_generator(sample_per_batch, batch_number):
-    """ Generating training data """
-    train_image_file = []
-    directory = '../EgoGesture Dataset/'
-    folder_name = ['SingleOne', 'SingleTwo', 'SingleThree', 'SingleFour', 'SingleFive',
-                   'SingleSix', 'SingleSeven', 'SingleEight']
-
-    for folder in folder_name:
-        train_image_file = train_image_file + os.listdir(directory + folder + '/')
-
-    for i in range(0, 10):
-        random.shuffle(train_image_file)
-
-    print('Training Dataset Size: {0}'.format(len(train_image_file)))
-
-    while True:
-        for i in range(0, batch_number - 1):
-            start = i * sample_per_batch
-            end = (i + 1) * sample_per_batch
-            x_batch = []
-            y_batch_prob = []
-            y_batch_pos = []
-            for n in range(start, end):
-                image_name = train_image_file[n]
-
-                try:
-                    image, probability, position = label_generator(directory=directory,
-                                                                   image_name=image_name,
-                                                                   type='')
-                except cv2.error:
-                    print(image_name)
-                    continue
-
-                # 1.0 Original image
-                x_batch.append(image)
-                y_batch_prob.append(probability)
-                pos = np.array([position, ] * 10)
-                y_batch_pos.append(pos)
-                # visualize(image, probability, pos[0])
-
-                """ Augmentation """
-
-                # 2.0 Original + translate
-                im, pos = translate(image, probability, position)
-                x_batch.append(im)
-                y_batch_prob.append(probability)
-                pos = np.array([pos, ] * 10)
-                y_batch_pos.append(pos)
-                # visualize(im, probability, pos[0])
-
-                # 3.0 Original + rotation
-                im, pos = rotation(image, probability, position)
-                x_batch.append(im)
-                y_batch_prob.append(probability)
-                pos = np.array([pos, ] * 10)
-                y_batch_pos.append(pos)
-                # visualize(im, probability, pos[0])
-
-                # 4.0 Original + salt
-                im, pos = salt(image, probability, position)
-                x_batch.append(im)
-                y_batch_prob.append(probability)
-                pos = np.array([pos, ] * 10)
-                y_batch_pos.append(pos)
-                # visualize(im, probability, pos[0])
-
-                # 5.0 Original + crop
-                im, pos = crop(image, probability, position)
-                x_batch.append(im)
-                y_batch_prob.append(probability)
-                pos = np.array([pos, ] * 10)
-                y_batch_pos.append(pos)
-                # visualize(im, probability, pos)
-
-                # 6.0 Original + noise
-                im, pos = noise(image, probability, position)
-                x_batch.append(im)
-                y_batch_prob.append(probability)
-                pos = np.array([pos, ] * 10)
-                y_batch_pos.append(pos)
-                # visualize(im, probability, pos[0])
-
-                # 7.0 Original + rotate + translate
-                im, pos = rotation(image, probability, position)
-                im, pos = translate(im, probability, pos)
-                x_batch.append(im)
-                y_batch_prob.append(probability)
-                pos = np.array([pos, ] * 10)
-                y_batch_pos.append(pos)
-                # visualize(im, probability, pos)
-
-                # 8.0 Original + rotate + crop
-                im, pos = rotation(image, probability, position)
-                im, pos = crop(im, probability, pos)
-                x_batch.append(im)
-                y_batch_prob.append(probability)
-                pos = np.array([pos, ] * 10)
-                y_batch_pos.append(pos)
-                # visualize(im, probability, pos[0])
-
-            x_batch = np.asarray(x_batch)
-            x_batch = x_batch.astype('float32')
-            x_batch = x_batch / 255.
-
-            y_batch_prob = np.asarray(y_batch_prob)
-            y_batch_pos = np.asarray(y_batch_pos)
-            y_batch_pos = y_batch_pos.astype('float32')
-            y_batch_pos = y_batch_pos / 128.
-            y_batch = [y_batch_prob, y_batch_pos]
-            yield (x_batch, y_batch)
+def batch_indices(batch_size=None, dataset_size=None):
+    index_a = list(range(0, dataset_size, batch_size))
+    index_b = list(range(batch_size, dataset_size, batch_size))
+    index_b.append(dataset_size)
+    indices = list(zip(index_a, index_b))
+    return indices
 
 
-def valid_generator(sample_per_batch, batch_number):
-    """ Generating validation data """
-    valid_image_file = []
-    directory = '../EgoGesture Dataset/'
-    folder_name = ['SingleOneValid', 'SingleTwoValid', 'SingleThreeValid', 'SingleFourValid', 'SingleFiveValid',
-                   'SingleSixValid', 'SingleSevenValid', 'SingleEightValid']
+def train_generator(batch_size, is_augment=True, viz=False):
+    if is_augment:
+        batch_size = int(batch_size / 2)
 
-    for folder in folder_name:
-        valid_image_file = valid_image_file + os.listdir(directory + folder + '/')
+    # load dataset
+    directory = 'dataset/train/'
 
-    # print(len(valid_image_file))
+    train_x_full = np.load(directory + 'train_x.npy')
+    train_y_prob_full = np.load(directory + 'train_y_prob.npy')
+    train_y_keys_full = np.load(directory + 'train_y_keys.npy')
+
+    dataset_size = train_y_prob_full.shape[0]
+    indices = batch_indices(batch_size=batch_size, dataset_size=dataset_size)
+    print('Training Dataset Size: {0}'.format(dataset_size))
 
     while True:
-        for i in range(0, batch_number - 1):
-            start = i * sample_per_batch
-            end = (i + 1) * sample_per_batch
-            x_batch = []
-            y_batch_prob = []
-            y_batch_pos = []
-            for n in range(start, end):
-                image_name = valid_image_file[n]
 
-                try:
-                    image, probability, position = label_generator(directory=directory,
-                                                                   image_name=image_name,
-                                                                   type='Valid')
-                except cv2.error:
-                    print(image_name)
-                    continue
+        for index in indices:
+            # load from dataset
+            train_x = train_x_full[index[0]:index[1]]
+            train_y_prob = train_y_prob_full[index[0]:index[1]]
+            train_y_keys = train_y_keys_full[index[0]:index[1]]
 
-                # 1.0 Original image
-                x_batch.append(image)
-                y_batch_prob.append(probability)
-                pos = np.array([position, ] * 10)
-                y_batch_pos.append(pos)
+            if viz:
+                visualize(train_x[-1], train_y_prob[-1], train_y_keys[-1])
 
-            x_batch = np.asarray(x_batch)
-            x_batch = x_batch.astype('float32')
-            x_batch = x_batch / 255.
+            # augment dataset and append to the batch
+            train_x_aug, train_y_keys_aug = augment(train_x, train_y_prob, train_y_keys)
+            train_x = np.append(train_x, train_x_aug, axis=0)
+            train_y_prob = np.append(train_y_prob, train_y_prob, axis=0)
+            train_y_keys = np.append(train_y_keys, train_y_keys_aug, axis=0)
 
-            y_batch_prob = np.asarray(y_batch_prob)
-            y_batch_pos = np.asarray(y_batch_pos)
-            y_batch_pos = y_batch_pos.astype('float32')
-            y_batch_pos = y_batch_pos / 128.
-            y_batch = [y_batch_prob, y_batch_pos]
-            yield (x_batch, y_batch)
+            if viz:
+                visualize(train_x[-1], train_y_prob[-1], train_y_keys[-1])
+
+            # normalizing the image and the keypoints
+            train_x = train_x / 255.0
+            train_y_prob = np.squeeze(train_y_prob)
+            train_y_keys = train_y_keys / 128.0
+
+            # creating ensembles of the keypoints
+            train_y_keys = np.reshape(train_y_keys, (train_y_keys.shape[0], 1, 10))
+            train_y_keys = np.repeat(train_y_keys, 10, axis=1)
+
+            # random shuffling over the batch
+            seed = random.randint(0, 1000)
+            np.random.seed(seed)
+            np.random.shuffle(train_x)
+            np.random.seed(seed)
+            np.random.shuffle(train_y_prob)
+            np.random.seed(seed)
+            np.random.shuffle(train_y_keys)
+
+            train_y = [train_y_prob, train_y_keys]
+            yield train_x, train_y
+
+
+def valid_generator(batch_size, viz=False):
+    directory = 'dataset/valid/'
+
+    valid_x_full = np.load(directory + 'valid_x.npy')
+    valid_y_prob_full = np.load(directory + 'valid_y_prob.npy')
+    valid_y_keys_full = np.load(directory + 'valid_y_keys.npy')
+
+    dataset_size = valid_y_prob_full.shape[0]
+    indices = batch_indices(batch_size=batch_size, dataset_size=dataset_size)
+    print('Validation  Dataset Size: {0}'.format(dataset_size))
+
+    while True:
+
+        for index in indices:
+            # load from dataset
+            valid_x = valid_x_full[index[0]:index[1]]
+            valid_y_prob = valid_y_prob_full[index[0]:index[1]]
+            valid_y_keys = valid_y_keys_full[index[0]:index[1]]
+
+            if viz:
+                visualize(valid_x[-1], valid_y_prob[-1], valid_y_keys[-1])
+
+            # normalizing the image and the keypoints
+            valid_x = valid_x / 255.0
+            valid_y_prob = np.squeeze(valid_y_prob)
+            valid_y_keys = valid_y_keys / 128.0
+
+            # creating ensembles of the keypoints
+            valid_y_keys = np.reshape(valid_y_keys, (valid_y_keys.shape[0], 1, 10))
+            valid_y_keys = np.repeat(valid_y_keys, 10, axis=1)
+
+            valid_y = [valid_y_prob, valid_y_keys]
+            yield valid_x, valid_y
 
 
 if __name__ == '__main__':
-    gen = train_generator(sample_per_batch=100, batch_number=220)
-    batch_x, batch_y = next(gen)
-    print(batch_x)
-    print(batch_y)
+    gen = valid_generator(batch_size=32, viz=True)
+    x_batch, y_batch = next(gen)
+
+    print(x_batch.shape)
+    print(y_batch[0].shape)
+    print(y_batch[1].shape)
+
+    visualize(x_batch[0] * 255., y_batch[0][0], y_batch[1][0][0] * 128.)
