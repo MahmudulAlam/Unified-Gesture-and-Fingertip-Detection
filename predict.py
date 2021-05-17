@@ -4,7 +4,7 @@ from hand_detector.detector import YOLO
 from unified_detector import Fingertips
 
 hand = YOLO(weights='weights/yolo.h5', threshold=0.8)
-fingertips = Fingertips(weights='weights/classes8.h5')
+fingertips = Fingertips(weights='weights/fingertip.h5')
 
 image = cv2.imread('data/sample.jpg')
 tl, br = hand.detect(image=image)

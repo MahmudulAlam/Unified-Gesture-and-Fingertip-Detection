@@ -1,24 +1,18 @@
-import os
 import cv2
 import time
 import numpy as np
 from statistics import mean
 from hand_detector.detector import YOLO
 from unified_detector import Fingertips
-from preprocess.label_gen_test import label_generator_testset
+
+images = np.load('../dataset/test/images.npy')
+test_x = np.load('../dataset/test/test_x.npy')
+test_y_prob = np.load('../dataset/test/test_y_prob.npy')
+test_y_keys = np.load('../dataset/test/test_y_keys.npy')
+crop_info = np.load('../dataset/test/crop_info.npy')
 
 hand_model = YOLO(weights='../weights/yolo.h5', threshold=0.5)
-fingertips = Fingertips(weights='../weights/classes8.h5')
-
-test_image_file = []
-directory = '../../EgoGesture Dataset/'
-test_folders = ['SingleOneTest', 'SingleTwoTest', 'SingleThreeTest', 'SingleFourTest',
-                'SingleFiveTest', 'SingleSixTest', 'SingleSevenTest', 'SingleEightTest']
-
-for folder in test_folders:
-    test_image_file = test_image_file + os.listdir(directory + folder + '/')
-
-print('# of images for performance analysis: ', len(test_image_file))
+fingertips = Fingertips(weights='../weights/fingertip.h5')
 
 # classification
 ground_truth_class = np.array([0, 0, 0, 0, 0, 0, 0, 0])
@@ -32,15 +26,18 @@ conf_mat = np.zeros(shape=(8, 8))
 pr_prob_per_yolo = []  # prediction of probability performance using yolo
 pr_pos_per_yolo = []  # prediction of position performance using yolo
 
-for image_numbers, image_name in enumerate(test_image_file, 1):
-    print('Images: ', image_numbers)
-    image, tl, _, ground_truths = label_generator_testset(directory=directory, image_name=image_name, type='Test')
+for n_image, (info, image, cropped_image, gt_prob, gt_pos) in enumerate(zip(crop_info, images, test_x,
+                                                                            test_y_prob, test_y_keys), 1):
+    print('Images: ', n_image)
+
+    tl = [info[0], info[1]]
+    height, width = info[2], info[3]
+
     top_left, bottom_right = hand_model.detect(image)
     if top_left or bottom_right is not None:
         x1, y1, x2, y2 = int(top_left[0]), int(top_left[1]), int(bottom_right[0]), int(bottom_right[1])
         cropped_image = image[y1:y2, x1:x2]
         height, width, _ = cropped_image.shape
-        gt_prob, gt_pos = ground_truths
 
         """ Predictions """
         tic = time.time()
@@ -50,6 +47,11 @@ for image_numbers, image_name in enumerate(test_image_file, 1):
         """ Post processing """
         threshold = 0.5
         prob = np.asarray([(p >= threshold) * 1.0 for p in prob])
+
+        for i in range(0, len(gt_pos), 2):
+            gt_pos[i] = gt_pos[i] * width / 128. + tl[0]
+            gt_pos[i + 1] = gt_pos[i + 1] * height / 128. + tl[1]
+
         for i in range(0, len(pos), 2):
             pos[i] = pos[i] * width + top_left[0]
             pos[i + 1] = pos[i + 1] * height + top_left[1]
@@ -79,6 +81,7 @@ for image_numbers, image_name in enumerate(test_image_file, 1):
         conf_mat[gt_cls, pred_cls] = conf_mat[gt_cls, pred_cls] + 1
         pr_prob_per_yolo.append(prob)
         pr_pos_per_yolo.append(pos)
+
         """ Drawing finger tips """
         index = 0
         color = [(15, 15, 240), (15, 240, 155), (240, 155, 15), (240, 15, 155), (240, 15, 240)]
@@ -88,8 +91,8 @@ for image_numbers, image_name in enumerate(test_image_file, 1):
                                    color=color[c], thickness=-2)
             index = index + 2
 
-    # cv2.imshow('', image)
-    # cv2.waitKey(0)
+    cv2.imshow('', image)
+    cv2.waitKey(0)
     # cv2.imwrite('output_perform/' + image_name, image)
 
 accuracy = prediction_class / ground_truth_class

@@ -13,7 +13,7 @@ else:
     assert False, "'" + hand_detection_method + \
                   "' hand detection does not exist. use either 'solo' or 'yolo' as hand detection method"
 
-fingertips = Fingertips(weights='weights/classes8.h5')
+fingertips = Fingertips(weights='weights/fingertip.h5')
 
 cam = cv2.VideoCapture(0)
 print('Unified Gesture & Fingertips Detection')

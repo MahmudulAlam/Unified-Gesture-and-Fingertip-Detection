@@ -1,9 +1,9 @@
 from math import ceil
 import tensorflow as tf
-from keras.optimizers import Adam
-from keras.callbacks import ModelCheckpoint
 from hand_detector.yolo.darknet import model
+from tensorflow.keras.optimizers import Adam
 from hand_detector.yolo.utils.info import data_info
+from tensorflow.keras.callbacks import ModelCheckpoint
 from hand_detector.yolo.generator import train_generator, valid_generator
 
 

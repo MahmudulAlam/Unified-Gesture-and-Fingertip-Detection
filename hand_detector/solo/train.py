@@ -1,8 +1,8 @@
 import os
 from math import floor
-from keras.optimizers import Adam
-from keras.callbacks import ModelCheckpoint
+from tensorflow.keras.optimizers import Adam
 from hand_detector.solo.solo_net import model
+from tensorflow.keras.callbacks import ModelCheckpoint
 from hand_detector.solo.generator import train_generator
 
 # create model

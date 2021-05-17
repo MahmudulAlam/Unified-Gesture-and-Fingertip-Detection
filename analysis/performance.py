@@ -1,22 +1,16 @@
-import os
 import cv2
 import time
 import numpy as np
 from statistics import mean
 from unified_detector import Fingertips
-from preprocess.label_gen_test import label_generator_testset
 
-test_image_file = []
-directory = '../../EgoGesture Dataset/'
-test_folders = ['SingleOneTest', 'SingleTwoTest', 'SingleThreeTest', 'SingleFourTest',
-                'SingleFiveTest', 'SingleSixTest', 'SingleSevenTest', 'SingleEightTest']
+images = np.load('../dataset/test/images.npy')
+test_x = np.load('../dataset/test/test_x.npy')
+test_y_prob = np.load('../dataset/test/test_y_prob.npy')
+test_y_keys = np.load('../dataset/test/test_y_keys.npy')
+crop_info = np.load('../dataset/test/crop_info.npy')
 
-for folder in test_folders:
-    test_image_file = test_image_file + os.listdir(directory + folder + '/')
-
-print('# of images for performance analysis: ', len(test_image_file))
-
-model = Fingertips(weights='../weights/classes8.h5')
+model = Fingertips(weights='../weights/fingertip.h5')
 
 # classification
 ground_truth_class = np.array([0, 0, 0, 0, 0, 0, 0, 0])
@@ -28,13 +22,12 @@ avg_time = 0
 iteration = 0
 conf_mat = np.zeros(shape=(8, 8))
 
-for image_numbers, image_name in enumerate(test_image_file, 1):
-    print('Images: ', image_numbers)
-    image, tl, cropped_image, ground_truths = label_generator_testset(directory=directory,
-                                                                      image_name=image_name,
-                                                                      type='Test')
-    height, width, _ = cropped_image.shape
-    gt_prob, gt_pos = ground_truths
+for n_image, (info, image, cropped_image, gt_prob, gt_pos) in enumerate(zip(crop_info, images, test_x,
+                                                                            test_y_prob, test_y_keys), 1):
+    print('Images: ', n_image)
+
+    tl = [info[0], info[1]]
+    height, width = info[2], info[3]
 
     """ Predictions """
     tic = time.time()
@@ -44,6 +37,11 @@ for image_numbers, image_name in enumerate(test_image_file, 1):
     """ Post processing """
     threshold = 0.5
     prob = np.asarray([(p >= threshold) * 1.0 for p in prob])
+
+    for i in range(0, len(gt_pos), 2):
+        gt_pos[i] = gt_pos[i] * width / 128. + tl[0]
+        gt_pos[i + 1] = gt_pos[i + 1] * height / 128. + tl[1]
+
     for i in range(0, len(pos), 2):
         pos[i] = pos[i] * width + tl[0]
         pos[i + 1] = pos[i + 1] * height + tl[1]
@@ -81,8 +79,8 @@ for image_numbers, image_name in enumerate(test_image_file, 1):
                                color=color[c], thickness=-2)
         index = index + 2
 
-    # cv2.imshow('', image)
-    # cv2.waitKey(0)
+    cv2.imshow('', image)
+    cv2.waitKey(0)
     # cv2.imwrite('output_perform/' + image_name, image)
 
 accuracy = prediction_class / ground_truth_class

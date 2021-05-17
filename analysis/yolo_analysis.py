@@ -1,10 +1,11 @@
 import numpy as np
 from preprocess.finder import class_finder
+
 """ Ground Truth Outputs """
-gt_probability = np.load('../data/gt/gt_prob_classes8.npy')
+gt_probability = np.load('../data/gt/gt_prob.npy')
 
 """ Predicted Outputs """
-pr_probability = np.load('../data/classes8/pr_prob_classes8.npy')
+pr_probability = np.load('../data/yolo/pr_prob_yolo.npy')
 
 class_number = [0, 1, 2, 3, 4, 5, 6, 7]
 accuracy = [[], [], [], [], [], [], [], []]
@@ -21,21 +22,21 @@ for threshold in threshold_values:
     false_negative = [0, 0, 0, 0, 0, 0, 0, 0]
     true_negative = [0, 0, 0, 0, 0, 0, 0, 0]
 
-    for id in class_number:
+    for id_ in class_number:
         for gt_prob, pr_prob in zip(gt_probability, pr_probability):
             prob = np.asarray([(p >= threshold) * 1.0 for p in pr_prob])
             gt_class = class_finder(gt_prob)
             pr_class = class_finder(prob)
 
-            if gt_class == pr_class == id:
-                true_positive[id] = true_positive[id] + 1
+            if gt_class == pr_class == id_:
+                true_positive[id_] = true_positive[id_] + 1
             else:
-                if gt_class == id:
-                    false_negative[id] = false_negative[id] + 1
-                elif pr_class == id:
-                    false_positive[id] = false_positive[id] + 1
+                if gt_class == id_:
+                    false_negative[id_] = false_negative[id_] + 1
+                elif pr_class == id_:
+                    false_positive[id_] = false_positive[id_] + 1
                 else:
-                    true_negative[id] = true_negative[id] + 1
+                    true_negative[id_] = true_negative[id_] + 1
 
     print('True positive:', true_positive)
     print('False positive:', false_positive)
