@@ -7,7 +7,7 @@ Included ```robust real-time hand detection using yolo``` for better smooth perf
 [![GitHub stars](https://img.shields.io/github/stars/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/network)
 [![GitHub issues](https://img.shields.io/github/issues/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/issues)
-[![Version](https://img.shields.io/badge/version-1.1-orange.svg?longCache=true&style=flat)](https://github.com/MahmudulAlam/Fingertip-Mixed-Reality)
+[![Version](https://img.shields.io/badge/version-1.2-orange.svg?longCache=true&style=flat)](https://github.com/MahmudulAlam/Fingertip-Mixed-Reality)
 [![GitHub license](https://img.shields.io/github/license/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/blob/master/LICENSE)
 
 <p align="center">
@@ -19,16 +19,15 @@ Included ```robust real-time hand detection using yolo``` for better smooth perf
 </p>
 
 ## Requirements
-- [x] TensorFlow-GPU==1.15.0
-- [x] Keras==2.2.4
-- [x] ImgAug==0.2.6
+- [x] TensorFlow-GPU==2.2.0
 - [x] OpenCV==4.2.0
+- [x] ImgAug==0.2.6
 - [x] Weights: [```Download the pre-trained weights```](https://mega.nz/#F!6stCxY5b!oB-3279KkhfhRULQFQO7yQ) files of the unified gesture recognition and fingertip detection model and put the ```weights``` folder in the working directory.
 
 [![Downloads](https://img.shields.io/badge/download-weights-green.svg?style=popout-flat&logo=mega)](https://mega.nz/#F!6stCxY5b!oB-3279KkhfhRULQFQO7yQ)
 [![Downloads](https://img.shields.io/badge/download-weights-blue.svg?style=popout-flat&logo=dropbox)](https://www.dropbox.com/sh/7pbfrgaor678eft/AAA8r5ADlMde0WkAtJQO_lo5a?dl=0)
 
-The ```weights``` folder contains four weights files. The ```classes5.h5``` is for the first five classes, ```classes8.h5``` is for the first eight classes. ```yolo.h5``` and ```solo.h5``` are for the yolo and solo method of hand detection. [(what is solo?)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/hand_detector/solo)
+The ```weights``` folder contains three weights files. The ```fingertip.h5``` is for unified gesture recignition and finertiop detection. ```yolo.h5``` and ```solo.h5``` are for the yolo and solo method of hand detection. [(what is solo?)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/hand_detector/solo)
 
 ## Paper
 [![Paper](https://img.shields.io/badge/paper-ArXiv-ff0a0a.svg?longCache=true&style=flat)](https://arxiv.org/abs/2101.02047)
@@ -44,7 +43,7 @@ To get more information about the proposed method and experiments, please go thr
 ```
 
 ## Dataset
-The proposed gesture recognition and fingertip detection model is trained by employing [```Scut-Ego-Gesture Dataset```](http://www.hcii-lab.net/data/SCUTEgoGesture/index.htm) which has a total of eleven different single hand gesture datasets. Among the eleven different gesture datasets, eight of them are considered for experimentation. A detailed explanation about the partition of the dataset along with the list of the images used in the training, validation, and the test set is provided in the [```dataset/```](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/dataset#dataset-description) folder.
+The proposed gesture recognition and fingertip detection model is trained by employing ```Scut-Ego-Gesture Dataset``` which has a total of eleven different single hand gesture datasets. Among the eleven different gesture datasets, eight of them are considered for experimentation. A detailed explanation about the partition of the dataset along with the list of the images used in the training, validation, and the test set is provided in the [```dataset/```](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/dataset#dataset-description) folder.
 
 ## Network Architecture 
 To implement the algorithm, the following network architecture is proposed where a single CNN is utilized for both hand gesture recognition and fingertip detection. 
