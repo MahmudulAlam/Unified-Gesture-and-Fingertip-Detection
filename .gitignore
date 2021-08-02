@@ -1,6 +1,0 @@
-.idea/
-__pycache__/
-dataset/train/
-dataset/valid/
-dataset/test/
-weights/
