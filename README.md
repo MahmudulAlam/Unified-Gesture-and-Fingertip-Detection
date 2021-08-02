@@ -7,8 +7,9 @@ Included ```robust real-time hand detection using yolo``` for better smooth perf
 [![GitHub stars](https://img.shields.io/github/stars/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/network)
 [![GitHub issues](https://img.shields.io/github/issues/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/issues)
-[![Version](https://img.shields.io/badge/version-1.2-orange.svg?longCache=true&style=flat)](https://github.com/MahmudulAlam/Fingertip-Mixed-Reality)
+[![Version](https://img.shields.io/badge/version-2.0-orange.svg?longCache=true&style=flat)](https://github.com/MahmudulAlam/Fingertip-Mixed-Reality)
 [![GitHub license](https://img.shields.io/github/license/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/blob/master/LICENSE)
+<img src="https://user-images.githubusercontent.com/37298971/123714340-f8d70800-d82a-11eb-9742-042a5d9334a1.png" width="28">
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/37298971/77615813-6de9cc80-6f5a-11ea-9172-a95e5604147c.gif" width="400">
@@ -30,15 +31,19 @@ Included ```robust real-time hand detection using yolo``` for better smooth perf
 The ```weights``` folder contains three weights files. The ```fingertip.h5``` is for unified gesture recignition and finertiop detection. ```yolo.h5``` and ```solo.h5``` are for the yolo and solo method of hand detection. [(what is solo?)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/hand_detector/solo)
 
 ## Paper
+[![Paper](https://img.shields.io/badge/paper-ScienceDirect-ff8919.svg?longCache=true&style=flat)](https://doi.org/10.1016/j.patcog.2021.108200)
 [![Paper](https://img.shields.io/badge/paper-ArXiv-ff0a0a.svg?longCache=true&style=flat)](https://arxiv.org/abs/2101.02047)
 
 To get more information about the proposed method and experiments, please go through the [```paper```](https://arxiv.org/abs/2101.02047). Cite the paper as: 
 ```
 @article{alam2021unified,
-  title={A Unified Learning Approach for Hand Gesture Recognition and Fingertip Detection},
-  author={Alam, Mohammad Mahmudul and Islam, Mohammad Tariqul and Rahman, SM Mahbubur},
-  journal={arXiv preprint arXiv:2101.02047},
-  year={2021}
+title = {Unified learning approach for egocentric hand gesture recognition and fingertip detection},
+author={Alam, Mohammad Mahmudul and Islam, Mohammad Tariqul and Rahman, SM Mahbubur},
+journal = {Pattern Recognition},
+volume = {121},
+pages = {108200},
+year = {2021},
+publisher={Elsevier},
 }
 ```
 
