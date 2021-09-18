@@ -36,14 +36,14 @@ The ```weights``` folder contains three weights files. The ```fingertip.h5``` is
 
 To get more information about the proposed method and experiments, please go through the [```paper```](https://arxiv.org/abs/2101.02047). Cite the paper as: 
 ```
-@article{alam2021unified,
-title = {Unified learning approach for egocentric hand gesture recognition and fingertip detection},
-author={Alam, Mohammad Mahmudul and Islam, Mohammad Tariqul and Rahman, SM Mahbubur},
-journal = {Pattern Recognition},
-volume = {121},
-pages = {108200},
-year = {2021},
-publisher={Elsevier},
+@article{alam2022unified,
+  title={Unified learning approach for egocentric hand gesture recognition and fingertip detection},
+  author={Alam, Mohammad Mahmudul and Islam, Mohammad Tariqul and Rahman, SM Mahbubur},
+  journal={Pattern Recognition},
+  volume={121},
+  pages={108200},
+  year={2022},
+  publisher={Elsevier}
 }
 ```
 
