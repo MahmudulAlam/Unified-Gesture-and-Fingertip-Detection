@@ -1,5 +1,7 @@
 ## Unified Gesture Recognition and Fingertip Detection
-A unified convolutional neural network (CNN) algorithm for both hand gesture recognition and fingertip detection at the same time. The proposed algorithm uses a single network to predict both finger class probabilities for classification and fingertips positional output for regression in one evaluation. From the finger class probabilities, the gesture is recognized, and using both of the information fingertips are localized. Instead of directly regressing the fingertips position from the fully connected (FC) layer of the CNN, we regress the ensemble of fingertips position from a fully convolutional network (FCN) and subsequently take ensemble average to regress the final fingertips positional output.
+<p align="justify">
+  A unified convolutional neural network (CNN) algorithm for both hand gesture recognition and fingertip detection at the same time. The proposed algorithm uses a single network to predict both finger class probabilities for classification and fingertips positional output for regression in one single evaluation. From the finger class probabilities, the gesture is recognized, and using both of the information fingertips are localized. Instead of directly regressing the fingertips position from the fully connected (FC) layer of the CNN, we regress an ensemble of fingertips position from a fully convolutional network (FCN) and subsequently take ensemble average to regress the final fingertips positional output.
+</p>
 
 ## Update 
 Included ```robust real-time hand detection using yolo``` for better smooth performance in the first stage of the detection system and most of the code has been cleaned and restructured for ease of use. To get the previous versions, please visit the release [section](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/releases).
@@ -28,13 +30,15 @@ Included ```robust real-time hand detection using yolo``` for better smooth perf
 [![Downloads](https://img.shields.io/badge/download-weights-green.svg?style=popout-flat&logo=mega)](https://mega.nz/#F!6stCxY5b!oB-3279KkhfhRULQFQO7yQ)
 [![Downloads](https://img.shields.io/badge/download-weights-blue.svg?style=popout-flat&logo=dropbox)](https://www.dropbox.com/sh/7pbfrgaor678eft/AAA8r5ADlMde0WkAtJQO_lo5a?dl=0)
 
-The ```weights``` folder contains three weights files. The ```fingertip.h5``` is for unified gesture recignition and finertiop detection. ```yolo.h5``` and ```solo.h5``` are for the yolo and solo method of hand detection. [(what is solo?)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/hand_detector/solo)
+The ```weights``` folder contains three weights files. The ```fingertip.h5``` is for unified gesture recognition and fingertip detection. ```yolo.h5``` and ```solo.h5``` are for the yolo and solo method of hand detection. [(what is solo?)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/hand_detector/solo)
 
 ## Paper
-[![Paper](https://img.shields.io/badge/paper-ScienceDirect-ff8919.svg?longCache=true&style=flat)](https://doi.org/10.1016/j.patcog.2021.108200)
+[![Paper](https://img.shields.io/badge/paper-ScienceDirect-ff6c00.svg?longCache=true&style=flat)](https://doi.org/10.1016/j.patcog.2021.108200)
 [![Paper](https://img.shields.io/badge/paper-ArXiv-ff0a0a.svg?longCache=true&style=flat)](https://arxiv.org/abs/2101.02047)
+<img src="https://user-images.githubusercontent.com/37298971/141495879-3b3d4ba7-955a-4c1c-bf55-24af319da78d.png" width="128">
 
-To get more information about the proposed method and experiments, please go through the [```paper```](https://arxiv.org/abs/2101.02047). Cite the paper as: 
+To get more information about the proposed method and experiments, please go through the [```Elsevier```](https://www.sciencedirect.com/science/article/abs/pii/S0031320321003824) or [```ArXiv```](https://arxiv.org/abs/2101.02047) version of the paper. Cite the paper as: 
+
 ```
 @article{alam2022unified,
   title={Unified learning approach for egocentric hand gesture recognition and fingertip detection},
@@ -77,4 +81,9 @@ where not only each fingertip is detected but also each finger is classified.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/37298971/60171964-85f6b900-982d-11e9-8f20-af40be2172f8.jpg">
+</p>
+
+## Contact Me!
+<p>
+  If you have any queries or concerns, please feel free to <a href=https://mahmudulalam.github.io/#contact>contact me</a>.
 </p>
