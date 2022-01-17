@@ -1,17 +1,17 @@
-## Unified Gesture Recognition and Fingertip Detection
-<p align="justify">
-  A unified convolutional neural network (CNN) algorithm for both hand gesture recognition and fingertip detection at the same time. The proposed algorithm uses a single network to predict both finger class probabilities for classification and fingertips positional output for regression in one single evaluation. From the finger class probabilities, the gesture is recognized, and using both of the information fingertips are localized. Instead of directly regressing the fingertips position from the fully connected (FC) layer of the CNN, we regress an ensemble of fingertips position from a fully convolutional network (FCN) and subsequently take ensemble average to regress the final fingertips positional output.
-</p>
-
-## Update 
-Included ```robust real-time hand detection using yolo``` for better smooth performance in the first stage of the detection system and most of the code has been cleaned and restructured for ease of use. To get the previous versions, please visit the release [section](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/releases).
-
+## Unified Gesture Recognition and Fingertip Detection 👋
 [![GitHub stars](https://img.shields.io/github/stars/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/network)
 [![GitHub issues](https://img.shields.io/github/issues/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/issues)
 [![Version](https://img.shields.io/badge/version-2.0-orange.svg?longCache=true&style=flat)](https://github.com/MahmudulAlam/Fingertip-Mixed-Reality)
 [![GitHub license](https://img.shields.io/github/license/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/blob/master/LICENSE)
 <img src="https://user-images.githubusercontent.com/37298971/123714340-f8d70800-d82a-11eb-9742-042a5d9334a1.png" width="28">
+
+<p align="justify">
+  A unified convolutional neural network (CNN) algorithm for both hand gesture recognition and fingertip detection at the same time. The proposed algorithm uses a single network to predict both finger class probabilities for classification and fingertips positional output for regression in one single evaluation. From the finger class probabilities, the gesture is recognized, and using both of the information fingertips are localized. Instead of directly regressing the fingertips position from the fully connected (FC) layer of the CNN, we regress an ensemble of fingertips position from a fully convolutional network (FCN) and subsequently take ensemble average to regress the final fingertips positional output.
+</p>
+
+## Update 🔥
+Included ```robust real-time hand detection using yolo``` for better smooth performance in the first stage of the detection system and most of the code has been cleaned and restructured for ease of use. To get the previous versions, please visit the release [section](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/releases).
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/37298971/77615813-6de9cc80-6f5a-11ea-9172-a95e5604147c.gif" width="400">
@@ -21,7 +21,7 @@ Included ```robust real-time hand detection using yolo``` for better smooth perf
   <img src="https://user-images.githubusercontent.com/37298971/72676259-5f45eb80-3ab9-11ea-96d7-436f160a4b84.png" width="600">
 </p>
 
-## Requirements
+## Requirements 🐍
 - [x] TensorFlow-GPU==2.2.0
 - [x] OpenCV==4.2.0
 - [x] ImgAug==0.2.6
@@ -32,7 +32,7 @@ Included ```robust real-time hand detection using yolo``` for better smooth perf
 
 The ```weights``` folder contains three weights files. The ```fingertip.h5``` is for unified gesture recognition and fingertip detection. ```yolo.h5``` and ```solo.h5``` are for the yolo and solo method of hand detection. [(what is solo?)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/hand_detector/solo)
 
-## Paper
+## Paper 📚
 [![Paper](https://img.shields.io/badge/paper-ScienceDirect-ff6c00.svg?longCache=true&style=flat)](https://doi.org/10.1016/j.patcog.2021.108200)
 [![Paper](https://img.shields.io/badge/paper-ArXiv-ff0a0a.svg?longCache=true&style=flat)](https://arxiv.org/abs/2101.02047)
 <img src="https://user-images.githubusercontent.com/37298971/141495879-3b3d4ba7-955a-4c1c-bf55-24af319da78d.png" width="128">
@@ -51,33 +51,35 @@ To get more information about the proposed method and experiments, please go thr
 }
 ```
 
-## Dataset 
+## Dataset 📁
 [![Dataset](https://img.shields.io/badge/download-dataset-bf1bfa.svg?longCache=true&style=flat)](https://drive.google.com/drive/folders/14LIb1Zj5yXgmvbifwn5A1fiaiL0r-RRh?usp=sharing)
 
-The proposed gesture recognition and fingertip detection model is trained by employing [```Scut-Ego-Gesture Dataset```](https://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w11/Wu_YOLSE_Egocentric_Fingertip_ICCV_2017_paper.pdf) which has a total of eleven different single hand gesture datasets. Among the eleven different gesture datasets, eight of them are considered for experimentation. A detailed explanation about the partition of the dataset along with the list of the images used in the training, validation, and the test set is provided in the [```dataset/```](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/dataset#dataset-description) folder. You can [```download```](https://drive.google.com/drive/folders/14LIb1Zj5yXgmvbifwn5A1fiaiL0r-RRh?usp=sharing) ⬇️ the preprocessed dataset that was used for experimentation. The shared folder also contains two python scripts to load the dataset.
+<p align="justify">
+  The proposed gesture recognition and fingertip detection model is trained by employing <a href="https://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w11/Wu_YOLSE_Egocentric_Fingertip_ICCV_2017_paper.pdf">Scut-Ego-Gesture Dataset</a> which has a total of eleven different single hand gesture datasets. Among the eleven different gesture datasets, eight of them are considered for experimentation. A detailed explanation about the partition of the dataset along with the list of the images used in the training, validation, and the test set is provided in the <a href="https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/dataset#dataset-description">dataset/</a> folder. You can <a href="https://drive.google.com/drive/folders/14LIb1Zj5yXgmvbifwn5A1fiaiL0r-RRh?usp=sharing">download</a> 💾🔽 the pre-processed dataset that was used for experimentation. The shared folder also contains two python scripts to load the dataset.
+</p>
 
-## Network Architecture 
+## Network Architecture 🕸️
 To implement the algorithm, the following network architecture is proposed where a single CNN is utilized for both hand gesture recognition and fingertip detection. 
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/37298971/60171959-82fbc880-982d-11e9-8c66-ee0109c5368d.jpg">
 </p>
 
-## Prediction 
+## Prediction 👽
 To get the prediction on a single image run the ```predict.py``` file. It will run the prediction in the sample image stored in the ```data/``` folder. Here is the output for the ```sample.jpg``` image. 
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/37298971/77616112-139d3b80-6f5b-11ea-81f0-977d50d44c4e.jpg" width="350">
 </p>
 
-## Real-Time!
+## Real-Time! 📷
 To run in real-time simply clone the repository and download the weights file and then run the ```real-time.py``` file. 
 ```
 directory > python real-time.py
 ```
 In real-time execution, there are two stages. In the first stage, the hand can be detected by using either ```you only look once (yolo)``` or ```single object localization (solo)``` algorithm. By default, ```yolo``` will be used here. The detected hand portion is then cropped and fed to the second stage for gesture recognition and fingertip detection. 
 
-## Output
+## Output 🎨
 Here is the output of the unified gesture recognition and fingertip detection model for all of the 8 classes of the dataset 
 where not only each fingertip is detected but also each finger is classified.
 
@@ -85,7 +87,7 @@ where not only each fingertip is detected but also each finger is classified.
   <img src="https://user-images.githubusercontent.com/37298971/60171964-85f6b900-982d-11e9-8f20-af40be2172f8.jpg">
 </p>
 
-## Contact Me!
+## Contact Me! 📢🚩🐛🚧
 <p>
   If you have any queries or concerns, please feel free to <a href=https://mahmudulalam.github.io/#contact>contact me</a>.
 </p>
