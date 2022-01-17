@@ -51,8 +51,10 @@ To get more information about the proposed method and experiments, please go thr
 }
 ```
 
-## Dataset
-The proposed gesture recognition and fingertip detection model is trained by employing ```Scut-Ego-Gesture Dataset``` which has a total of eleven different single hand gesture datasets. Among the eleven different gesture datasets, eight of them are considered for experimentation. A detailed explanation about the partition of the dataset along with the list of the images used in the training, validation, and the test set is provided in the [```dataset/```](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/dataset#dataset-description) folder.
+## Dataset 
+[![Dataset](https://img.shields.io/badge/download-dataset-bf1bfa.svg?longCache=true&style=flat)](https://drive.google.com/drive/folders/14LIb1Zj5yXgmvbifwn5A1fiaiL0r-RRh?usp=sharing)
+
+The proposed gesture recognition and fingertip detection model is trained by employing [```Scut-Ego-Gesture Dataset```](https://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w11/Wu_YOLSE_Egocentric_Fingertip_ICCV_2017_paper.pdf) which has a total of eleven different single hand gesture datasets. Among the eleven different gesture datasets, eight of them are considered for experimentation. A detailed explanation about the partition of the dataset along with the list of the images used in the training, validation, and the test set is provided in the [```dataset/```](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/dataset#dataset-description) folder. You can [```download```](https://drive.google.com/drive/folders/14LIb1Zj5yXgmvbifwn5A1fiaiL0r-RRh?usp=sharing) ⬇️ the preprocessed dataset that was used for experimentation. The shared folder also contains two python scripts to load the dataset.
 
 ## Network Architecture 
 To implement the algorithm, the following network architecture is proposed where a single CNN is utilized for both hand gesture recognition and fingertip detection. 
