@@ -22,15 +22,15 @@ Included ```robust real-time hand detection using yolo``` for better smooth perf
 </p>
 
 ## Requirements 🐍
-- [x] TensorFlow-GPU==2.2.0
-- [x] OpenCV==4.2.0
-- [x] ImgAug==0.2.6
-- [x] Weights: [```Download the pre-trained weights```](https://mega.nz/#F!6stCxY5b!oB-3279KkhfhRULQFQO7yQ) files of the unified gesture recognition and fingertip detection model and put the ```weights``` folder in the working directory.
+- TensorFlow-GPU==2.2.0  ```pip install tensorflow-gpu==2.2.0```
+- OpenCV==4.2.0  ```pip install opencv-python==4.2.0```
+- ImgAug==0.2.6  ```pip install imgaug==0.2.6```
+- Weights: [```Download the pre-trained weights```](https://mega.nz/#F!6stCxY5b!oB-3279KkhfhRULQFQO7yQ) files of the unified gesture recognition and fingertip detection model and put the ```weights/``` folder in the working directory.
 
 [![Downloads](https://img.shields.io/badge/download-weights-green.svg?style=popout-flat&logo=mega)](https://mega.nz/#F!6stCxY5b!oB-3279KkhfhRULQFQO7yQ)
 [![Downloads](https://img.shields.io/badge/download-weights-blue.svg?style=popout-flat&logo=dropbox)](https://www.dropbox.com/sh/7pbfrgaor678eft/AAA8r5ADlMde0WkAtJQO_lo5a?dl=0)
 
-The ```weights``` folder contains three weights files. The ```fingertip.h5``` is for unified gesture recognition and fingertip detection. ```yolo.h5``` and ```solo.h5``` are for the yolo and solo method of hand detection. [(what is solo?)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/hand_detector/solo)
+The ```weights/``` folder contains three weights files. The ```fingertip.h5``` is for unified gesture recognition and fingertip detection. ```yolo.h5``` and ```solo.h5``` are for the yolo and solo method of hand detection. [(what is solo?)](https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/hand_detector/solo)
 
 ## Paper 📚
 [![Paper](https://img.shields.io/badge/paper-ScienceDirect-ff6c00.svg?longCache=true&style=flat)](https://doi.org/10.1016/j.patcog.2021.108200)
@@ -39,7 +39,7 @@ The ```weights``` folder contains three weights files. The ```fingertip.h5``` is
 
 To get more information about the proposed method and experiments, please go through the [```Elsevier```](https://www.sciencedirect.com/science/article/abs/pii/S0031320321003824) or [```ArXiv```](https://arxiv.org/abs/2101.02047) version of the paper. Cite the paper as: 
 
-```
+```bibtex
 @article{alam2022unified,
   title={Unified learning approach for egocentric hand gesture recognition and fingertip detection},
   author={Alam, Mohammad Mahmudul and Islam, Mohammad Tariqul and Rahman, SM Mahbubur},
@@ -51,11 +51,11 @@ To get more information about the proposed method and experiments, please go thr
 }
 ```
 
-## Dataset 📁
+## Dataset :card_index_dividers:
 [![Dataset](https://img.shields.io/badge/download-dataset-bf1bfa.svg?longCache=true&style=flat)](https://drive.google.com/drive/folders/14LIb1Zj5yXgmvbifwn5A1fiaiL0r-RRh?usp=sharing)
 
 <p align="justify">
-  The proposed gesture recognition and fingertip detection model is trained by employing <a href="https://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w11/Wu_YOLSE_Egocentric_Fingertip_ICCV_2017_paper.pdf">Scut-Ego-Gesture Dataset</a> which has a total of eleven different single hand gesture datasets. Among the eleven different gesture datasets, eight of them are considered for experimentation. A detailed explanation about the partition of the dataset along with the list of the images used in the training, validation, and the test set is provided in the <a href="https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/dataset#dataset-description">dataset/</a> folder. You can <a href="https://drive.google.com/drive/folders/14LIb1Zj5yXgmvbifwn5A1fiaiL0r-RRh?usp=sharing">download</a> 💾🔽 the pre-processed dataset that was used for experimentation. The shared folder also contains two python scripts to load the dataset.
+  The proposed gesture recognition and fingertip detection model is trained by employing <a href="https://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w11/Wu_YOLSE_Egocentric_Fingertip_ICCV_2017_paper.pdf">Scut-Ego-Gesture Dataset</a> which has a total of eleven different single hand gesture datasets. Among the eleven different gesture datasets, eight of them are considered for experimentation. A detailed explanation about the partition of the dataset along with the list of the images used in the training, validation, and the test set is provided in the <a href="https://github.com/MahmudulAlam/Unified-Gesture-and-Fingertip-Detection/tree/master/dataset#dataset-description">dataset/</a> folder. You can <a href="https://drive.google.com/drive/folders/14LIb1Zj5yXgmvbifwn5A1fiaiL0r-RRh?usp=sharing">download</a> 💾:file_folder: the pre-processed dataset that was used for experimentation. The shared folder also contains two python scripts to load the dataset.
 </p>
 
 ## Network Architecture 🕸️
@@ -72,9 +72,9 @@ To get the prediction on a single image run the ```predict.py``` file. It will r
   <img src="https://user-images.githubusercontent.com/37298971/77616112-139d3b80-6f5b-11ea-81f0-977d50d44c4e.jpg" width="350">
 </p>
 
-## Real-Time! 📷
+## Real-Time! :camera_flash:
 To run in real-time simply clone the repository and download the weights file and then run the ```real-time.py``` file. 
-```
+```python
 directory > python real-time.py
 ```
 In real-time execution, there are two stages. In the first stage, the hand can be detected by using either ```you only look once (yolo)``` or ```single object localization (solo)``` algorithm. By default, ```yolo``` will be used here. The detected hand portion is then cropped and fed to the second stage for gesture recognition and fingertip detection. 
@@ -87,7 +87,7 @@ where not only each fingertip is detected but also each finger is classified.
   <img src="https://user-images.githubusercontent.com/37298971/60171964-85f6b900-982d-11e9-8f20-af40be2172f8.jpg">
 </p>
 
-## Contact Me! 📢🚩🐛🚧
+## Contact Me! 🐛📢🌎🚩🚧:mailbox_with_mail:
 <p>
   If you have any queries or concerns, please feel free to <a href=https://mahmudulalam.github.io/#contact>contact me</a>.
 </p>
